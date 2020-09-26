@@ -122,3 +122,22 @@ body {
     flex: 1 1 0;
     max-width: 40px;
 }
+
+.question-answer {
+    flex: 1 1 0;
+    margin-left: 10px;
+    font-size: 16px;
+}
+
+#quiz-container .wrong-answer,
+#quiz-container .wrong-answer .btn-letter {
+    background-color: rgb(175, 24, 24);
+    color: white;
+}
+
+#quiz-container .correct-answer,
+#quiz-container .correct-answer .btn-letter {
+    background-color: seagreen;
+    color: white;
+}
+
