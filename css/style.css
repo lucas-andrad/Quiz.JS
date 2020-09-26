@@ -14,3 +14,10 @@ body {
     display: none !important;
 }
 
+#main-title {
+    padding: 40px 0;
+    text-align: center;
+    background-color: rgb(14, 92, 165);
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
