@@ -11,19 +11,19 @@ const questions = [
     question: 'PHP was developed for?',
     answers: [
       {
-        answer: 'back-end',
+        answer: 'Back-end',
         correct: true,
       },
       {
-        answer: 'front-end',
+        answer: 'Front-end',
         correct: false,
       },
       {
-        answer: 'Sistema operacional',
+        answer: 'Operational Systems',
         correct: false,
       },
       {
-        answer: 'Banco de dados',
+        answer: 'Database',
         correct: false,
       },
     ],
@@ -50,7 +50,7 @@ const questions = [
     ],
   },
   {
-    question: "What's the selector id in CSS",
+    question: "What's the id selector in CSS",
     answers: [
       {
         answer: '#',
@@ -70,6 +70,153 @@ const questions = [
       },
     ],
   },
+  {
+    question: 'React.JS is?',
+    answers: [
+      {
+        answer: 'A front-end framework',
+        correct: true,
+      },
+      {
+        answer: 'A back-end framework',
+        correct: false,
+      },
+      {
+        answer: 'A mathematic library',
+        correct: false,
+      },
+      {
+        answer: 'A programming language',
+        correct: false,
+      },
+    ],
+  },
+  {
+    question: 'What language has the extension ".cs"?',
+    answers: [
+      {
+        answer: 'C++',
+        correct: false,
+      },
+      {
+        answer: 'C',
+        correct: false,
+      },
+      {
+        answer: 'C#',
+        correct: true,
+      },
+      {
+        answer: 'Java',
+        correct: false,
+      },
+    ],
+  },
+  {
+    question: 'Which language below has static typing?',
+    answers: [
+      {
+        answer: 'PHP',
+        correct: false,
+      },
+      {
+        answer: 'Java',
+        correct: true,
+      },
+      {
+        answer: 'Python',
+        correct: false,
+      },
+      {
+        answer: 'Ruby',
+        correct: false,
+      },
+    ],
+  },
+  {
+    question: 'How to declare arrays in javascript?',
+    answers: [
+      {
+        answer: '[1, 2, 3]',
+        correct: true,
+      },
+      {
+        answer: '(1, 2, 3)',
+        correct: false,
+      },
+      {
+        answer: '{1, 2, 3}',
+        correct: false,
+      },
+      {
+        answer: '1, 2, 3',
+        correct: false,
+      },
+    ],
+  },
+  {
+    question: 'What library to run javascript in backend?',
+    answers: [
+      {
+        answer: 'Sequelize',
+        correct: false,
+      },
+      {
+        answer: 'Angular.JS',
+        correct: false,
+      },
+      {
+        answer: 'React',
+        correct: false,
+      },
+      {
+        answer: 'Node.JS',
+        correct: true,
+      },
+    ],
+  },
+  {
+    question: 'Which answer below IS NOT a database management system?',
+    answers: [
+      {
+        answer: 'MySQL',
+        correct: false,
+      },
+      {
+        answer: 'MongoDB',
+        correct: false,
+      },
+      {
+        answer: 'Postman',
+        correct: true,
+      },
+      {
+        answer: 'PostgreSQL',
+        correct: false,
+      },
+    ],
+  },
+  {
+    question: 'Which answer below IS NOT a programming language?',
+    answers: [
+      {
+        answer: 'Assembly',
+        correct: false,
+      },
+      {
+        answer: 'HTML',
+        correct: true,
+      },
+      {
+        answer: 'Go',
+        correct: false,
+      },
+      {
+        answer: 'Delphi',
+        correct: false,
+      },
+    ],
+  }
 ];
 
 function init() {
@@ -138,12 +285,12 @@ function nextQuestion() {
     } else {
       createQuestion(actualQuestion);
     }
-  }, 100);
+  }, 800);
 }
 
 function successMessage() {
-  quizContainer.classList.add('hide');
-  scoreContainer.classList.remove('hide');
+  quizContainer.classList.toggle('hide');
+  scoreContainer.classList.toggle('hide');
 
   const score = ((points / questions.length) * 100).toFixed(2);
   const displayScore = document.querySelector('#display-score span');
@@ -155,3 +302,13 @@ function successMessage() {
   const totalQuestions = document.querySelector('#question-qtd');
   totalQuestions.textContent = questions.length;
 }
+
+const restartBtn = document.querySelector('#restart');
+
+restartBtn.addEventListener('click', () => {
+  actualQuestion = 0;
+  points = 0;
+  quizContainer.classList.toggle('hide');
+  scoreContainer.classList.toggle('hide');
+  init();
+});
