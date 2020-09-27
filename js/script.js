@@ -90,18 +90,23 @@ function createQuestion(i) {
   questionNumber.textContent = i + 1;
 
   questions[i].answers.forEach((answer, i) => {
-    const answerTemplate = document.querySelector('.answer-template').cloneNode(true)
-    const letterBtn = answerTemplate.querySelector('.btn-letter')
-    const answerText = answerTemplate.querySelector('.question-answer')
+    const answerTemplate = document
+      .querySelector('.answer-template')
+      .cloneNode(true);
+    const letterBtn = answerTemplate.querySelector('.btn-letter');
+    const answerText = answerTemplate.querySelector('.question-answer');
 
-    letterBtn.textContent = letters[i]
-    answerText.textContent = answer['answer']
+    letterBtn.textContent = letters[i];
+    answerText.textContent = answer['answer'];
 
-    answerTemplate.setAttribute('correct-answer', answer['correct'])
+    answerTemplate.setAttribute('correct-answer', answer['correct']);
+    answerTemplate.classList.remove('hide');
+    answerTemplate.classList.remove('answer-template');
 
-    answerTemplate.classList.remove('hide')
-    answerTemplate.classList.remove('answer-template')
+    answersBox.appendChild(answerTemplate);
 
-    answersBox.appendChild(answerTemplate)
-  })
+    answerTemplate.addEventListener('click', () => {});
+  });
+
+  actualQuestion += 1;
 }
