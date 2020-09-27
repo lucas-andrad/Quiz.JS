@@ -105,8 +105,25 @@ function createQuestion(i) {
 
     answersBox.appendChild(answerTemplate);
 
-    answerTemplate.addEventListener('click', () => {});
+    answerTemplate.addEventListener('click', () => {
+      checkAnswer(this);
+    });
   });
 
   actualQuestion += 1;
+}
+
+function checkAnswer(btn) {
+  const buttons = answersBox.querySelectorAll('button');
+  buttons.forEach((button) => {
+    if (button.getAttribute('correct-answer') === 'true') {
+      button.classList.add('correct-answer');
+
+      if (btn === button) {
+        points += 1;
+      }
+    } else {
+      button.classList.add('wrong-answer');
+    }
+  });
 }
