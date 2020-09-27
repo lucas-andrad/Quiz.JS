@@ -119,8 +119,6 @@ function checkAnswer(btn) {
     if (button.getAttribute('correct-answer') === 'true') {
       button.classList.add('correct-answer');
 
-      console.log(btn)
-      console.log(button)
       if (btn === button) {
         points += 1;
       }
@@ -148,9 +146,6 @@ function successMessage() {
   scoreContainer.classList.remove('hide');
 
   const score = ((points / questions.length) * 100).toFixed(2);
-  console.log(points)
-  console.log(questions.length)
-  console.log(score)
   const displayScore = document.querySelector('#display-score span');
   displayScore.textContent = score.toString();
 
