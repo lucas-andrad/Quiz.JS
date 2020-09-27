@@ -133,10 +133,16 @@ function checkAnswer(btn) {
 function nextQuestion(){
   setTimeout(()=>{
     if (actualQuestion >= questions.length){
-
+      successMessage()
+      return
     }
     else{
       createQuestion(actualQuestion)
     }
   }, 2000)
+}
+
+function successMessage(){
+  quizContainer.classList.add('hide')
+  scoreContainer.classList.remove('hide')
 }
