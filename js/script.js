@@ -126,4 +126,17 @@ function checkAnswer(btn) {
       button.classList.add('wrong-answer');
     }
   });
+
+  nextQuestion()
+}
+
+function nextQuestion(){
+  setTimeout(()=>{
+    if (actualQuestion >= questions.length){
+
+    }
+    else{
+      createQuestion(actualQuestion)
+    }
+  }, 2000)
 }
