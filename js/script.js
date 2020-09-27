@@ -106,7 +106,7 @@ function createQuestion(i) {
     answersBox.appendChild(answerTemplate);
 
     answerTemplate.addEventListener('click', () => {
-      checkAnswer(this);
+      checkAnswer(answerTemplate);
     });
   });
 
@@ -119,6 +119,8 @@ function checkAnswer(btn) {
     if (button.getAttribute('correct-answer') === 'true') {
       button.classList.add('correct-answer');
 
+      console.log(btn)
+      console.log(button)
       if (btn === button) {
         points += 1;
       }
@@ -127,22 +129,34 @@ function checkAnswer(btn) {
     }
   });
 
-  nextQuestion()
+  nextQuestion();
 }
 
-function nextQuestion(){
-  setTimeout(()=>{
-    if (actualQuestion >= questions.length){
-      successMessage()
-      return
+function nextQuestion() {
+  setTimeout(() => {
+    if (actualQuestion >= questions.length) {
+      successMessage();
+      return;
+    } else {
+      createQuestion(actualQuestion);
     }
-    else{
-      createQuestion(actualQuestion)
-    }
-  }, 2000)
+  }, 100);
 }
 
-function successMessage(){
-  quizContainer.classList.add('hide')
-  scoreContainer.classList.remove('hide')
+function successMessage() {
+  quizContainer.classList.add('hide');
+  scoreContainer.classList.remove('hide');
+
+  const score = ((points / questions.length) * 100).toFixed(2);
+  console.log(points)
+  console.log(questions.length)
+  console.log(score)
+  const displayScore = document.querySelector('#display-score span');
+  displayScore.textContent = score.toString();
+
+  const correctAnswers = document.querySelector('#correct-answer');
+  correctAnswers.textContent = points;
+
+  const totalQuestions = document.querySelector('#question-qtd');
+  totalQuestions.textContent = questions.length;
 }
